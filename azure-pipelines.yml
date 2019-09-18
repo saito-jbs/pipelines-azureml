@@ -5,6 +5,15 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 steps:
+- task: PythonScript@0
+  inputs:
+    scriptSource: 'inline'
+    script: 'from azureml.core.authentication import InteractiveLoginAuthentication'
+
+- task: PythonScript@0
+  inputs:
+    scriptSource: 'inline'
+    script: 'interactive_auth = InteractiveLoginAuthentication(tenant_id=e5613f0e-73de-440a-92f0-e77993262215)'
 
 - task: AzureCLI@1
   displayName: 'Install the CLI'
